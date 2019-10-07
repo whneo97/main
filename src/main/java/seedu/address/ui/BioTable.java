@@ -24,9 +24,6 @@ public class BioTable extends UiPart<Region> {
     @FXML
     private TableColumn data;
 
-    @FXML
-    private ListView<Person> personListView;
-
     public BioTable() {
         super(FXML);
     }

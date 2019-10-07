@@ -25,12 +25,9 @@ public class Profile extends UiPart<Region> {
     @FXML
     private Label asl;
 
-    @FXML
-    private ListView<Person> personListView;
-
     public Profile(Image img, String name, String asl) {
         super(FXML);
-        this.img.setImage(img);
+//        this.img.setImage(img);
         this.name.setText(name);
         this.asl.setText(asl);
     }

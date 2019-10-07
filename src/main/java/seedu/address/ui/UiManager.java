@@ -38,10 +38,12 @@ public class UiManager implements Ui {
         primaryStage.getIcons().add(getImage(ICON_APPLICATION));
 
         try {
-            mainWindow = new MainWindow(primaryStage, logic);
-            mainWindow.show(); //This should be called before creating other UI parts
-            mainWindow.fillInnerParts();
-
+//            mainWindow = new MainWindow(primaryStage, logic);
+            BioWindow bioWindow = new BioWindow(primaryStage, logic);
+//            mainWindow.show(); //This should be called before creating other UI parts
+//            mainWindow.fillInnerParts();
+            bioWindow.show(); //This should be called before creating other UI parts
+            bioWindow.fillInnerParts();
         } catch (Throwable e) {
             logger.severe(StringUtil.getDetails(e));
             showFatalErrorDialogAndShutdown("Fatal error during initializing", e);

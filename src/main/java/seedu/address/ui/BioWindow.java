@@ -9,8 +9,11 @@ import javafx.scene.control.TextInputControl;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import seedu.address.MainApp;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
@@ -24,7 +27,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
  */
 public class BioWindow extends UiPart<Stage> {
 
-    private static final String FXML = "MainWindow.fxml";
+    private static final String FXML = "BioWindow.fxml";
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
@@ -37,8 +40,6 @@ public class BioWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
-    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/user.png"));
-
     @FXML
     private StackPane commandBoxPlaceholder;
 
@@ -46,13 +47,13 @@ public class BioWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
+    private StackPane resultDisplayPlaceholder;
+
+    @FXML
     private StackPane profilePlaceholder;
 
     @FXML
     private StackPane bioTablePlaceholder;
-
-    @FXML
-    private StackPane resultDisplayPlaceholder;
 
     @FXML
     private StackPane statusbarPlaceholder;
@@ -114,7 +115,8 @@ public class BioWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        profile = new Profile(userImage, "Amy", "23, F, Example Street #03-21 S(612345)");
+
+        profile = new Profile(null, "Amy", "23, F, Example Street #03-21 S(612345)");
         profilePlaceholder.getChildren().add(profile.getRoot());
 
         bioTable = new BioTable();
