@@ -82,6 +82,10 @@ public class MainWindow extends UiPart<Stage> {
         return mainWindowScene;
     }
 
+    public void setMainWindowScene(Scene mainWindowScene) {
+        this.mainWindowScene = mainWindowScene;
+    }
+
     public AchievementsCache getAchievementsCache() {
         return achievementsCache;
     }
@@ -129,6 +133,7 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
+
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 

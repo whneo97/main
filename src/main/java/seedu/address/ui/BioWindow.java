@@ -224,19 +224,20 @@ public class BioWindow extends UiPart<Stage> {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
                 (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
-        bioWindowScene = mainWindow.getMainWindowScene();
-//        MainWindow mainWindow = new MainWindow(primaryStage, logic);
-
-        primaryStage.setScene(bioWindowScene);
-        primaryStage.show();
+//        bioWindowScene = mainWindow.getMainWindowScene();
+////        MainWindow mainWindow = new MainWindow(primaryStage, logic);
+//
+//        primaryStage.setScene(bioWindowScene);
+//        primaryStage.show();
 
 //        Stage stageThatMainWindowBelongs = mainWindow.getPrimaryStage();
 //        stageThatMainWindowBelongs.setScene(new Scene(mainWindow.()));
 //
-//        mainWindow.show();
-//        mainWindow.setAchievementsCache(achievementsCache);
+        MainWindow mainWindow = new MainWindow(primaryStage, logic);
+        mainWindow.show();
+        mainWindow.setMainWindowScene(this.mainWindow.getMainWindowScene());
 //        mainWindow.fillInnerParts();
-//        mainWindow.getResultDisplay().setFeedbackToUser(feedbackToUser);
+        mainWindow.getResultDisplay().setFeedbackToUser(feedbackToUser);
     }
 
     /**
