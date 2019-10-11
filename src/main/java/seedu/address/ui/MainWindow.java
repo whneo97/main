@@ -168,6 +168,7 @@ public class MainWindow extends UiPart<Stage> {
                 (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
         BioWindow bioWindow = new BioWindow(primaryStage, logic);
+        bioWindow.setMainWindow(this);
         bioWindow.show();
         bioWindow.setAchievementsCache(achievementsCache);
         bioWindow.fillInnerParts();

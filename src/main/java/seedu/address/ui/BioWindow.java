@@ -1,11 +1,15 @@
 package seedu.address.ui;
 
+import java.io.IOException;
 import java.util.logging.Logger;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.image.Image;
@@ -44,6 +48,7 @@ public class BioWindow extends UiPart<Stage> {
     private BioTable bioTable;
     private HelpWindow helpWindow;
     private AchievementsCache achievementsCache;
+    private MainWindow mainWindow;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -76,6 +81,10 @@ public class BioWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
+    }
+
+    public void setMainWindow(MainWindow mainWindow) {
+        this.mainWindow = mainWindow;
     }
 
     public Stage getPrimaryStage() {
@@ -203,15 +212,25 @@ public class BioWindow extends UiPart<Stage> {
      * Switches this window to the MainWindow.
      */
     @FXML
-    public void switchToMainWindow(String feedbackToUser) {
+    public void switchToMainWindow(String feedbackToUser) throws IOException {
         hide();
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
                 (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
-        MainWindow mainWindow = new MainWindow(primaryStage, logic);
+//        MainWindow mainWindow = new MainWindow(primaryStage, logic);
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
+        Stage stage = primaryStage;
+        Scene scene = new Scene(loader.load());
+        stage.setScene(scene);
+
+
+        Stage stageThatMainWindowBelongs = mainWindow.getPrimaryStage();
+        stageThatMainWindowBelongs.setScene(new Scene(mainWindow.()));
+
         mainWindow.show();
         mainWindow.setAchievementsCache(achievementsCache);
-        mainWindow.fillInnerParts();
+//        mainWindow.fillInnerParts();
         mainWindow.getResultDisplay().setFeedbackToUser(feedbackToUser);
     }
 
