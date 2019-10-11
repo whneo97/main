@@ -51,6 +51,9 @@ public class BioWindow extends UiPart<Stage> {
     private MainWindow mainWindow;
 
     @FXML
+    private Scene bioWindowScene;
+
+    @FXML
     private StackPane commandBoxPlaceholder;
 
     @FXML
@@ -93,6 +96,10 @@ public class BioWindow extends UiPart<Stage> {
 
     public ResultDisplay getResultDisplay() {
         return resultDisplay;
+    }
+
+    public Scene getBioWindowScene() {
+        return bioWindowScene;
     }
 
     public AchievementsCache getAchievementsCache() {
@@ -212,26 +219,24 @@ public class BioWindow extends UiPart<Stage> {
      * Switches this window to the MainWindow.
      */
     @FXML
-    public void switchToMainWindow(String feedbackToUser) throws IOException {
-        hide();
+    public void switchToMainWindow(String feedbackToUser) {
+//        hide();
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
                 (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
+        bioWindowScene = mainWindow.getMainWindowScene();
 //        MainWindow mainWindow = new MainWindow(primaryStage, logic);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
-        Stage stage = primaryStage;
-        Scene scene = new Scene(loader.load());
-        stage.setScene(scene);
+        primaryStage.setScene(bioWindowScene);
+        primaryStage.show();
 
-
-        Stage stageThatMainWindowBelongs = mainWindow.getPrimaryStage();
-        stageThatMainWindowBelongs.setScene(new Scene(mainWindow.()));
-
-        mainWindow.show();
-        mainWindow.setAchievementsCache(achievementsCache);
+//        Stage stageThatMainWindowBelongs = mainWindow.getPrimaryStage();
+//        stageThatMainWindowBelongs.setScene(new Scene(mainWindow.()));
+//
+//        mainWindow.show();
+//        mainWindow.setAchievementsCache(achievementsCache);
 //        mainWindow.fillInnerParts();
-        mainWindow.getResultDisplay().setFeedbackToUser(feedbackToUser);
+//        mainWindow.getResultDisplay().setFeedbackToUser(feedbackToUser);
     }
 
     /**

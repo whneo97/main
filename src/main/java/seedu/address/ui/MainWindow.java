@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
@@ -35,6 +36,9 @@ public class MainWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
     private AchievementsCache achievementsCache;
+
+    @FXML
+    private Scene mainWindowScene;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -72,6 +76,10 @@ public class MainWindow extends UiPart<Stage> {
 
     public ResultDisplay getResultDisplay() {
         return resultDisplay;
+    }
+
+    public Scene getMainWindowScene() {
+        return mainWindowScene;
     }
 
     public AchievementsCache getAchievementsCache() {
