@@ -1,14 +1,11 @@
 package seedu.address.ui;
 
-import java.io.IOException;
 import java.util.logging.Logger;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
@@ -220,23 +217,23 @@ public class BioWindow extends UiPart<Stage> {
      */
     @FXML
     public void switchToMainWindow(String feedbackToUser) {
-//        hide();
+        //        hide();
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
                 (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
-//        bioWindowScene = mainWindow.getMainWindowScene();
-////        MainWindow mainWindow = new MainWindow(primaryStage, logic);
-//
-//        primaryStage.setScene(bioWindowScene);
-//        primaryStage.show();
+        // bioWindowScene = mainWindow.getMainWindowScene();
+        // MainWindow mainWindow = new MainWindow(primaryStage, logic);
+        //
+        // primaryStage.setScene(bioWindowScene);
+        // primaryStage.show();
+        //
+        // Stage stageThatMainWindowBelongs = mainWindow.getPrimaryStage();
+        // stageThatMainWindowBelongs.setScene(new Scene(mainWindow.()));
 
-//        Stage stageThatMainWindowBelongs = mainWindow.getPrimaryStage();
-//        stageThatMainWindowBelongs.setScene(new Scene(mainWindow.()));
-//
         MainWindow mainWindow = new MainWindow(primaryStage, logic);
         mainWindow.show();
         mainWindow.setMainWindowScene(this.mainWindow.getMainWindowScene());
-//        mainWindow.fillInnerParts();
+        // mainWindow.fillInnerParts();
         mainWindow.getResultDisplay().setFeedbackToUser(feedbackToUser);
     }
 
