@@ -1,15 +1,16 @@
 package seedu.address.logic.commands;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_PARAMETER;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static seedu.sugarmummy.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.sugarmummy.commons.core.Messages.MESSAGE_INVALID_PARAMETER;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.parser.AverageCommandParser;
-import seedu.address.model.record.RecordType;
-import seedu.address.model.statistics.AverageType;
+import seedu.sugarmummy.logic.commands.records.AverageCommand;
+import seedu.sugarmummy.logic.parser.records.AverageCommandParser;
+import seedu.sugarmummy.model.record.RecordType;
+import seedu.sugarmummy.model.statistics.AverageType;
 
 public class AverageCommandParserTest {
     private AverageCommandParser parser = new AverageCommandParser();
@@ -55,7 +56,7 @@ public class AverageCommandParserTest {
         // invalid average type
         assertParseFailure(parser, " a/YEARLY rt/BLOODSUGAR",
                 String.format(MESSAGE_INVALID_PARAMETER, AverageCommand.MESSAGE_USAGE,
-                AverageCommand.MESSAGE_INVALID_AVGTYPE));
+                        AverageCommand.MESSAGE_INVALID_AVGTYPE));
 
         // invalid record type
         assertParseFailure(parser, " a/WEEKLY rt/ANYHOW",

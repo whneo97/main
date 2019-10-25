@@ -6,6 +6,8 @@ import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.sugarmummy.model.record.Concentration;
+
 public class ConcentrationTest {
     @Test
     public void constructor_null_throwsNullPointerException() {

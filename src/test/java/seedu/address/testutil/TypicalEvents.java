@@ -3,11 +3,11 @@ package seedu.address.testutil;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import seedu.address.model.DateTime;
-import seedu.address.model.calendar.Description;
-import seedu.address.model.calendar.Event;
-import seedu.address.model.calendar.Reminder;
-import seedu.address.model.calendar.Repetition;
+import seedu.sugarmummy.model.calendar.DateTime;
+import seedu.sugarmummy.model.calendar.Description;
+import seedu.sugarmummy.model.calendar.Event;
+import seedu.sugarmummy.model.calendar.Reminder;
+import seedu.sugarmummy.model.calendar.Repetition;
 
 /**
  * A utility class containing a list of {@code Event} objects to be used in tests.
@@ -23,5 +23,7 @@ public class TypicalEvents {
     public static final Event APPOINTMENT = new EventBuilder().build();
     public static final Event MEETING = new EventBuilder().withDescription("Team meeting")
             .withDateTime(DATE_MAR22, TIME_MORN).build();
-    private TypicalEvents() {} // prevents instantiation
+
+    private TypicalEvents() {
+    } // prevents instantiation
 }

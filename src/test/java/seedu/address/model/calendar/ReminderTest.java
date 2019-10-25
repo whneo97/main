@@ -14,6 +14,7 @@ import static seedu.address.testutil.TypicalReminders.WEEKLY;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.testutil.ReminderBuilder;
+import seedu.sugarmummy.model.calendar.Reminder;
 
 public class ReminderTest {
 

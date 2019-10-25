@@ -12,9 +12,10 @@ import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import seedu.address.commons.core.GuiSettings;
-import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.UserPrefs;
+import seedu.sugarmummy.commons.core.GuiSettings;
+import seedu.sugarmummy.commons.exceptions.DataConversionException;
+import seedu.sugarmummy.model.UserPrefs;
+import seedu.sugarmummy.storage.JsonUserPrefsStorage;
 
 public class JsonUserPrefsStorageTest {
 

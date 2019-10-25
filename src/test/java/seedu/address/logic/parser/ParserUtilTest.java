@@ -2,9 +2,9 @@ package seedu.address.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_RECORD;
+import static seedu.sugarmummy.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,17 +14,18 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.bio.Address;
-import seedu.address.model.bio.DateOfBirth;
-import seedu.address.model.bio.Gender;
-import seedu.address.model.bio.Goal;
-import seedu.address.model.bio.MedicalCondition;
-import seedu.address.model.bio.Name;
-import seedu.address.model.bio.Nric;
-import seedu.address.model.bio.OtherBioInfo;
-import seedu.address.model.bio.Phone;
-import seedu.address.model.bio.ProfileDesc;
+import seedu.sugarmummy.logic.parser.ParserUtil;
+import seedu.sugarmummy.logic.parser.exceptions.ParseException;
+import seedu.sugarmummy.model.bio.Address;
+import seedu.sugarmummy.model.bio.DateOfBirth;
+import seedu.sugarmummy.model.bio.Gender;
+import seedu.sugarmummy.model.bio.Goal;
+import seedu.sugarmummy.model.bio.MedicalCondition;
+import seedu.sugarmummy.model.bio.Name;
+import seedu.sugarmummy.model.bio.Nric;
+import seedu.sugarmummy.model.bio.OtherBioInfo;
+import seedu.sugarmummy.model.bio.Phone;
+import seedu.sugarmummy.model.bio.ProfileDesc;
 
 public class ParserUtilTest {
     private static final String INVALID_NAME = "R@chel";
@@ -327,7 +328,7 @@ public class ParserUtilTest {
                 Arrays.asList(VALID_GOAL_1, VALID_GOAL_2));
         List<Goal> expectedGoalList = new ArrayList<Goal>(
                 Arrays.asList(new Goal(VALID_GOAL_1),
-                new Goal(VALID_GOAL_2)));
+                        new Goal(VALID_GOAL_2)));
         assertEquals(expectedGoalList, actualGoalList);
     }
 

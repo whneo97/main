@@ -1,8 +1,8 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static seedu.sugarmummy.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -10,13 +10,14 @@ import java.time.Month;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.AddCommand;
-import seedu.address.model.DateTime;
-import seedu.address.model.record.BloodSugar;
-import seedu.address.model.record.Bmi;
-import seedu.address.model.record.Concentration;
-import seedu.address.model.record.Height;
-import seedu.address.model.record.Weight;
+import seedu.sugarmummy.logic.commands.records.AddCommand;
+import seedu.sugarmummy.logic.parser.records.AddCommandParser;
+import seedu.sugarmummy.model.calendar.DateTime;
+import seedu.sugarmummy.model.record.BloodSugar;
+import seedu.sugarmummy.model.record.Bmi;
+import seedu.sugarmummy.model.record.Concentration;
+import seedu.sugarmummy.model.record.Height;
+import seedu.sugarmummy.model.record.Weight;
 
 public class AddCommandParserTest {
     private AddCommandParser parser = new AddCommandParser();
@@ -84,13 +85,13 @@ public class AddCommandParserTest {
         assertParseFailure(parser, " rt/BLOODSUGAR dt/1970-01-01 08:00",
                 expectedMessage);
         assertParseFailure(parser, " rt/BLOODSUGAR con/12.34",
-            expectedMessage);
+                expectedMessage);
         assertParseFailure(parser, " rt/BMI w/1 h/1",
-            expectedMessage);
+                expectedMessage);
         assertParseFailure(parser, " rt/BMI h/1 dt/1970-01-01 08:00",
-            expectedMessage);
+                expectedMessage);
         assertParseFailure(parser, " rt/BMI w/1 dt/1970-01-01 08:00",
-            expectedMessage);
+                expectedMessage);
 
         //        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE);
         //

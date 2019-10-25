@@ -3,14 +3,14 @@ package seedu.address.testutil;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import seedu.address.model.DateTime;
-import seedu.address.model.calendar.Description;
-import seedu.address.model.calendar.Reminder;
-import seedu.address.model.calendar.Repetition;
+import seedu.sugarmummy.model.calendar.DateTime;
+import seedu.sugarmummy.model.calendar.Description;
+import seedu.sugarmummy.model.calendar.Reminder;
+import seedu.sugarmummy.model.calendar.Repetition;
 
 /**
-* A utility class to help with building Reminder objects.
-*/
+ * A utility class to help with building Reminder objects.
+ */
 public class ReminderBuilder {
     public static final String DEFAULT_DESCRIPTION = "Insulin injection";
     public static final LocalDate DEFAULT_DATE = LocalDate.of(2019, 10, 12);

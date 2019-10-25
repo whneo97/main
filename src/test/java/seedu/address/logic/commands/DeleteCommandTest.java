@@ -5,19 +5,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_RECORD;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_RECORD;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.commons.core.Messages;
-import seedu.address.commons.core.index.Index;
-import seedu.address.model.Calendar;
-import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
-import seedu.address.model.UserPrefs;
-import seedu.address.model.bio.UserList;
-import seedu.address.model.record.UniqueRecordList;
-import seedu.sgm.model.food.UniqueFoodList;
+import seedu.sugarmummy.commons.core.Messages;
+import seedu.sugarmummy.commons.core.index.Index;
+import seedu.sugarmummy.logic.commands.records.DeleteCommand;
+import seedu.sugarmummy.model.Model;
+import seedu.sugarmummy.model.ModelManager;
+import seedu.sugarmummy.model.UserPrefs;
+import seedu.sugarmummy.model.bio.UserList;
+import seedu.sugarmummy.model.calendar.Calendar;
+import seedu.sugarmummy.model.food.UniqueFoodList;
+import seedu.sugarmummy.model.record.UniqueRecordList;
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
@@ -25,7 +25,7 @@ import seedu.sgm.model.food.UniqueFoodList;
  */
 public class DeleteCommandTest {
 
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new UserList(),
+    private Model model = new ModelManager(new UserPrefs(), new UserList(),
             new UniqueFoodList(), new UniqueRecordList(), new Calendar());
 
     //    @Test

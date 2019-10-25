@@ -2,7 +2,6 @@ package seedu.address.model.calendar;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import static seedu.address.testutil.TypicalEvents.APPOINTMENT;
 import static seedu.address.testutil.TypicalEvents.AUTO_REMINDER;
 import static seedu.address.testutil.TypicalEvents.DATE_FEB10;
@@ -14,6 +13,7 @@ import static seedu.address.testutil.TypicalEvents.TIME_MORN;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.testutil.EventBuilder;
+import seedu.sugarmummy.model.calendar.Event;
 
 class EventTest {
     @Test

@@ -1,13 +1,14 @@
 package seedu.address.logic.commands;
 
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.bio.BioCommand.SHOWING_BIO_MESSAGE;
+import static seedu.sugarmummy.logic.commands.bio.BioCommand.SHOWING_BIO_MESSAGE;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.bio.BioCommand;
-import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
+import seedu.sugarmummy.logic.commands.CommandResult;
+import seedu.sugarmummy.logic.commands.bio.BioCommand;
+import seedu.sugarmummy.model.Model;
+import seedu.sugarmummy.model.ModelManager;
 
 class BioCommandTest {
     private Model model = new ModelManager();

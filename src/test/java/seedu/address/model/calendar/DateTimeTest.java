@@ -9,7 +9,7 @@ import java.time.LocalTime;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.DateTime;
+import seedu.sugarmummy.model.calendar.DateTime;
 
 class DateTimeTest {
     private LocalDate validDate = LocalDate.of(2020, 1, 20);

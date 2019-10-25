@@ -8,6 +8,8 @@ import java.io.FileNotFoundException;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.sugarmummy.commons.util.StringUtil;
+
 public class StringUtilTest {
 
     //---------------- Tests for isNonZeroUnsignedInteger --------------------------------------
@@ -132,7 +134,7 @@ public class StringUtilTest {
     @Test
     public void getDetails_exceptionGiven() {
         assertTrue(StringUtil.getDetails(new FileNotFoundException("file not found"))
-            .contains("java.io.FileNotFoundException: file not found"));
+                .contains("java.io.FileNotFoundException: file not found"));
     }
 
     @Test

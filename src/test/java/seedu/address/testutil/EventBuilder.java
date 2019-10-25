@@ -4,11 +4,11 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Optional;
 
-import seedu.address.model.DateTime;
-import seedu.address.model.calendar.Description;
-import seedu.address.model.calendar.Event;
-import seedu.address.model.calendar.Reminder;
-import seedu.address.model.calendar.Repetition;
+import seedu.sugarmummy.model.calendar.DateTime;
+import seedu.sugarmummy.model.calendar.Description;
+import seedu.sugarmummy.model.calendar.Event;
+import seedu.sugarmummy.model.calendar.Reminder;
+import seedu.sugarmummy.model.calendar.Repetition;
 
 /**
  * A utility class to help with building Event objects.
@@ -86,6 +86,7 @@ public class EventBuilder {
 
     /**
      * Build a event.
+     *
      * @return a event.
      */
     public Event build() {

@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.address.model.calendar.Reminder;
-import seedu.address.model.calendar.Repetition;
+import seedu.sugarmummy.model.calendar.Reminder;
+import seedu.sugarmummy.model.calendar.Repetition;
 
 /**
  * A utility class containing a list of {@code Reminder} objects to be used in tests.
@@ -33,7 +33,8 @@ public class TypicalReminders {
     public static final Reminder CHECK_WEEKLY_SUMMARY = new ReminderBuilder().withDescription("Check weekly summary")
             .withDateTime(DATE_DEC20, TIME_EVEN).withRepetition(WEEKLY).build();
 
-    private TypicalReminders() {} // prevents instantiation
+    private TypicalReminders() {
+    } // prevents instantiation
 
     public static List<Reminder> getTypicalReminders() {
         return new ArrayList<>(Arrays.asList(LUNCH_INSULIN_INJECTION, DINNER_INSULIN_INJECTION, BUY_INSULIN,

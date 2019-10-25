@@ -1,9 +1,9 @@
 package seedu.address.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_RECORD_DISPLAYED_INDEX;
-import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.sugarmummy.commons.core.Messages.MESSAGE_INVALID_RECORD_DISPLAYED_INDEX;
+import static seedu.sugarmummy.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -12,24 +12,24 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.ListCommand;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.Calendar;
-import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.UserPrefs;
-import seedu.address.model.record.UniqueRecordList;
-import seedu.address.storage.JsonAddressBookStorage;
-import seedu.address.storage.JsonCalendarStorage;
-import seedu.address.storage.JsonFoodListStorage;
-import seedu.address.storage.JsonRecordListStorage;
-import seedu.address.storage.JsonUserPrefsStorage;
-import seedu.address.storage.StorageManager;
-import seedu.address.storage.bio.JsonUserListStorage;
-import seedu.sgm.model.food.UniqueFoodList;
+import seedu.sugarmummy.logic.Logic;
+import seedu.sugarmummy.logic.LogicManager;
+import seedu.sugarmummy.logic.commands.CommandResult;
+import seedu.sugarmummy.logic.commands.ListCommand;
+import seedu.sugarmummy.logic.commands.exceptions.CommandException;
+import seedu.sugarmummy.logic.parser.exceptions.ParseException;
+import seedu.sugarmummy.model.Model;
+import seedu.sugarmummy.model.ModelManager;
+import seedu.sugarmummy.model.UserPrefs;
+import seedu.sugarmummy.model.calendar.Calendar;
+import seedu.sugarmummy.model.food.UniqueFoodList;
+import seedu.sugarmummy.model.record.UniqueRecordList;
+import seedu.sugarmummy.storage.JsonUserPrefsStorage;
+import seedu.sugarmummy.storage.StorageManager;
+import seedu.sugarmummy.storage.bio.JsonUserListStorage;
+import seedu.sugarmummy.storage.calendar.JsonCalendarStorage;
+import seedu.sugarmummy.storage.food.JsonFoodListStorage;
+import seedu.sugarmummy.storage.record.JsonRecordListStorage;
 
 public class LogicManagerTest {
     private static final IOException DUMMY_IO_EXCEPTION = new IOException("dummy exception");
@@ -42,17 +42,15 @@ public class LogicManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonAddressBookStorage addressBookStorage =
-            new JsonAddressBookStorage(temporaryFolder.resolve("addressBook.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
         JsonUserListStorage userListStorage = new JsonUserListStorage(temporaryFolder.resolve("userList.json"));
         JsonFoodListStorage jsonFoodListStorage = new JsonFoodListStorage(temporaryFolder.resolve("foodList.json"));
         JsonRecordListStorage jsonRecordListStorage = new JsonRecordListStorage(
-            temporaryFolder.resolve("recordList.json")
+                temporaryFolder.resolve("recordList.json")
         );
         JsonCalendarStorage jsonCalendarStorage = new JsonCalendarStorage(temporaryFolder.resolve("eventlist.json"),
                 temporaryFolder.resolve("reminderlist.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage, userListStorage,
+        StorageManager storage = new StorageManager(userPrefsStorage, userListStorage,
                 jsonFoodListStorage, jsonRecordListStorage, jsonCalendarStorage);
         logic = new LogicManager(model, storage);
     }
@@ -97,11 +95,6 @@ public class LogicManagerTest {
     //        assertCommandFailure(addCommand, CommandException.class, expectedMessage, expectedModel);
     //    }
 
-    @Test
-    public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredPersonList().remove(0));
-    }
-
     /**
      * Executes the command and confirms that - no exceptions are thrown <br> - the feedback message is equal to {@code
      * expectedMessage} <br> - the internal model manager state is the same as that in {@code expectedModel} <br>
@@ -140,7 +133,7 @@ public class LogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
                                       String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), model.getUserList(),
+        Model expectedModel = new ModelManager(new UserPrefs(), model.getUserList(),
                 new UniqueFoodList(), new UniqueRecordList(), new Calendar());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
@@ -158,17 +151,4 @@ public class LogicManagerTest {
         assertEquals(expectedModel, model);
     }
 
-    /**
-     * A stub class to throw an {@code IOException} when the save method is called.
-     */
-    private static class JsonAddressBookIoExceptionThrowingStub extends JsonAddressBookStorage {
-        private JsonAddressBookIoExceptionThrowingStub(Path filePath) {
-            super(filePath);
-        }
-
-        @Override
-        public void saveAddressBook(ReadOnlyAddressBook addressBook, Path filePath) throws IOException {
-            throw DUMMY_IO_EXCEPTION;
-        }
-    }
 }

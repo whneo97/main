@@ -6,6 +6,8 @@ import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.sugarmummy.model.record.Weight;
+
 public class WeightTest {
     @Test
     public void constructor_null_throwsNullPointerException() {
