@@ -31,11 +31,11 @@ import seedu.sugarmummy.model.bio.ProfileDesc;
 
 class EditBioCommandParserTest {
 
+    private EditBioCommandParser parser = new EditBioCommandParser();
+
     @Test
     void parse() {
     }
-
-    private EditBioCommandParser parser = new EditBioCommandParser();
 
     @Test
     public void parseFailure_nullArguments() {
@@ -47,7 +47,6 @@ class EditBioCommandParserTest {
         assertParseFailure(parser, "n/Bob n/Amy p/12345 e/23456 m/Type II Diabetes",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditBioCommand.MESSAGE_USAGE));
     }
-
 
 
     @Test
@@ -71,7 +70,7 @@ class EditBioCommandParserTest {
     }
 
     @Test
-    public void parseFailure_multipleNRICs() {
+    public void parseFailure_multipleNrics() {
         assertParseFailure(parser, " n/Bob nric/s1234567a nric/s2345678b p/12345 e/23456 m/Type II Diabetes",
                 MESSAGE_ENSURE_ONLY_ONE_PREFIX_SINGULAR + "[nric/]");
     }
@@ -101,7 +100,7 @@ class EditBioCommandParserTest {
     }
 
     @Test
-    public void parseSuccess_minimal() { 
+    public void parseSuccess_minimal() {
         EditUserDescriptor editUserDescriptor = new EditUserDescriptor();
         editUserDescriptor.setName(new Name("Bob"));
         assertParseSuccess(parser, " n/Bob", new EditBioCommand(editUserDescriptor));
@@ -132,7 +131,7 @@ class EditBioCommandParserTest {
 
         EditUserDescriptor editUserDescriptor = new EditUserDescriptor();
         editUserDescriptor.setContactNumbers(List.of(new Phone("12345"), new Phone("54321")));
-        
+
         HashMap<Index, Phone> indexEmergencyContactMap = new HashMap<>();
         indexEmergencyContactMap.put(Index.fromOneBased(1), new Phone("23456"));
         indexEmergencyContactMap.put(Index.fromOneBased(2), new Phone("65432"));
@@ -157,7 +156,7 @@ class EditBioCommandParserTest {
     }
 
     @Test
-    public void parseFailure_invalidSubArgument_Strings() throws ParseException {
+    public void parseFailure_invalidSubArgument_strings() throws ParseException {
         assertParseFailure(parser, " e/hello/23456", MESSAGE_INVALID_SUBARGUMENT_INDEX);
     }
 

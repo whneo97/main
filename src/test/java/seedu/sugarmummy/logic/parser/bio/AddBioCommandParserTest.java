@@ -28,7 +28,7 @@ import seedu.sugarmummy.model.bio.User;
 class AddBioCommandParserTest {
 
     private AddBioCommandParser parser = new AddBioCommandParser();
-    
+
     @Test
     public void parseFailure_missingName() {
         assertParseFailure(parser, " p/12345 e/23456 m/Type II Diabetes",
@@ -78,7 +78,7 @@ class AddBioCommandParserTest {
     }
 
     @Test
-    public void parseFailure_multipleNRICs() {
+    public void parseFailure_multipleNrics() {
         assertParseFailure(parser, " n/Bob nric/s1234567a nric/s2345678b p/12345 e/23456 m/Type II Diabetes",
                 MESSAGE_ENSURE_ONLY_ONE_PREFIX_SINGULAR + "[nric/]");
     }
@@ -106,12 +106,12 @@ class AddBioCommandParserTest {
         assertParseFailure(parser, " n/Bob o/other info o/more other info p/12345 e/23456 m/Type II Diabetes",
                 MESSAGE_ENSURE_ONLY_ONE_PREFIX_SINGULAR + "[o/]");
     }
-    
+
     @Test
     public void parseSuccess_minimal() {
         User user = new User(new Name("Bob"), new DisplayPicPath(""), new ProfileDesc(""), new Nric(""),
                 new Gender(""), new DateOfBirth(""), List.of(new Phone("12345")), List.of(new Phone("23456")),
-                List.of(new MedicalCondition("Type II Diabetes")), new Address(""), Collections.emptyList() ,
+                List.of(new MedicalCondition("Type II Diabetes")), new Address(""), Collections.emptyList(),
                 new OtherBioInfo(""));
         assertParseSuccess(parser, " n/Bob p/12345 e/23456 m/Type II Diabetes", new AddBioCommand(user));
     }
@@ -135,7 +135,7 @@ class AddBioCommandParserTest {
                 new DateOfBirth(""),
                 List.of(new Phone("12345"), new Phone("54321")), List.of(new Phone("23456"), new Phone("65432")),
                 List.of(new MedicalCondition(
-                "Type II Diabetes"), new MedicalCondition("High Blood Pressure")), new Address(""),
+                        "Type II Diabetes"), new MedicalCondition("High Blood Pressure")), new Address(""),
                 List.of(new Goal("firstGoal"), new Goal("secondGoal")), new OtherBioInfo(""));
         assertParseSuccess(parser, " m/Type II Diabetes e/23456 n/Bob e/65432 m/High Blood Pressure p/12345 "
                         + "p/54321 goal/firstGoal goal/secondGoal",

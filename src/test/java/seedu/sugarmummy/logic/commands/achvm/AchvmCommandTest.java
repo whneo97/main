@@ -22,11 +22,10 @@ import seedu.sugarmummy.ui.DisplayPaneType;
 
 class AchvmCommandTest {
     private Model model = new ModelStubForAchievements();
-    private Model expectedModel = new ModelStubForAchievements();
-
     private final String encouragementMessage = userHasNoAchievements()
             ? SHOWING_ENCOURAGEMENT_WITHOUT_ACHIEVEMENTS
             : SHOWING_ENCOURAGEMENT_WITH_ACHIEVEMENTS;
+    private Model expectedModel = new ModelStubForAchievements();
 
     /**
      * Returns whether or not a user has achievements.
@@ -52,6 +51,16 @@ class AchvmCommandTest {
         assertCommandSuccess(new AchvmCommand(), model, expectedCommandResult, expectedModel);
     }
 
+    @Test
+    public void getDisplayPaneType_test() {
+        assertEquals(DisplayPaneType.ACHVM, new AchvmCommand().getDisplayPaneType());
+    }
+
+    @Test
+    public void getNewPaneIsToBeCreated_test() {
+        assertTrue(new AchvmCommand().getNewPaneIsToBeCreated());
+    }
+
     private static class ModelStubForAchievements extends ModelStub {
         @Override
         public Map<RecordType, List<Achievement>> getAchievementsMap() {
@@ -69,16 +78,6 @@ class AchvmCommandTest {
                         .getAchievementsMap());
             }
         }
-    }
-
-    @Test
-    public void getDisplayPaneType_test() {
-        assertEquals(DisplayPaneType.ACHVM, new AchvmCommand().getDisplayPaneType());
-    }
-
-    @Test
-    public void getNewPaneIsToBeCreated_test() {
-        assertTrue(new AchvmCommand().getNewPaneIsToBeCreated());
     }
 
 }
