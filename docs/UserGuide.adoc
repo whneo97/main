@@ -29,7 +29,7 @@ Moreover, being a computer app with Command Line Interface, SugarMummy is optimi
 
 Hope following features will benefit you and enjoy!
 
-* Data tracker for various data types (blood sugar levels and bmi)
+* Data tracker for various data types (blood sugar levels and BMI)
 * Easy-to-use reminder and calendar
 * Personalized user experience (achievements, biography, and motivational quotes)
 * Daily, Weekly and Monthly graph summary for your activities and health level
@@ -58,8 +58,8 @@ The GUI should appear in a few seconds.
 e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 . Some example commands you can try:
 
-* **`add`**`rt/BLOODSUGAR con/10 dt/2019-11-01 12:12` : adds a `bloodsugar` record to the app.
-* **`delete`**`3` : deletes the 3rd record shown in the current list
+* **`add`**` rt/BLOODSUGAR con/10 dt/2019-11-01 12:12` : adds a `bloodsugar` record to the app.
+* **`delete`**` 3` : deletes the 3rd record shown in the current list
 * *`exit`* : exits the app
 
 . Refer to <<Features>> for details of each command.
@@ -82,7 +82,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 Format: `add rt/RECORD_TYPE dt/DATETIME` followed by parameters that the RECORD_TYPE accepts.
 
 There must not be any duplicate parameters.
-Ordering of parameters is flexible (other than "add").
+Other than "add", ordering of fields is flexible.
 
 rt/ value is case sensitive, RECORD_TYPE must be in capital letters.
 dt/ value must not be in the future.
@@ -115,7 +115,11 @@ Index must be a positive integer.
 
 The index refers to the index number shown in the displayed entries list
 
-==== Edits a specified data entry from the diabetes tracker app: `edit` `[coming in v2.0]`
+==== Edits an existing data entry from the diabetes tracker app: `edit` `[coming in v2.0]`
+
+Format: `edit INDEX`
+
+Allows users to modify existing record fields.
 //end::datalog[]
 
 //tag::calendar[]
@@ -127,11 +131,11 @@ Command arguments for calendar and reminder:
     - `dt/DATETIME` The format of date time is: `yyyy-mm-dd hh:mm` and the number should be valid.
 If more than one are present and the command only accepts one `dt/`, the last argument is taken. Otherwise, see below in `event` command for more details.
     - `r/REPETITION` Repetition can only take value `once`, `daily` or `weekly`(case insensitive). If more than one are present, the last argument is taken.
-    - `td/TIMEDURATION` The format of time duration is: `hh:mm` and it should not be blank. e.g.
+    - `td/TIME_DURATION` The format of time duration is: `hh:mm` and it should not be blank. e.g.
     `01:30` represents 1 hour and 30 minutes. If more than one are present, the last argument is taken.
     - `ym/YEAR_MONTH` The format of year month is: `yyyy-mm` and the number should be valid. If more than one are present, the last argument is taken.
     - `ymd/YEAR_MONTH_DAY` The format of year month day is: `yyyy-mm-dd` and the number should be valid. If more than one are present, the last argument is taken.
-    - `ymw/YEAR_MONTH_DAY` The format of year month day is: `yyyy-dd-dd` and the number should be valid(same as year month day). If more than one are present, the last argument is taken.
+    - `ymw/YEAR_MONTH_DAY` The format of year month day is: `yyyy-mm-dd` and the number should be valid(same as year month day). If more than one are present, the last argument is taken.
         See below in `calendar` command for more details if more than one of `ym/`, `ymd`, `ymw/` are present.
 
 ==== Add a reminder: `reminder`
@@ -172,8 +176,8 @@ Format: `event d/DESCRIPTION dt/DATETIME [dt/DATETIME] [td/TIME_DURATION]`
 
 Add an event with a starting time and an optional ending time(starting time before the current date time is accepted). There is no reminder for an event by default.
 User can also create a reminder for this event by specifying a time duration and a one time reminder will show up at the starting time of the event minus this time duration.
-For example, `event d/appointment dt/2019-12-20 14:00 dt/2019-12-20 15:00 td/01:30` adds an appointment event on 2019 Dec 20 15:00 to the calendar and a reminder for it at
-13:30 on that day.
+For example, `event d/appointment dt/2019-12-20 14:00 dt/2019-12-20 15:00 td/01:30` adds an appointment event on 2019 Dec 20 from 14:00 to 15:00 to the calendar and a reminder for it at
+12:30 on that day.
 
 If only one `dt/` is present, it will be recognized as the starting date time. If there are more than one `dt/`, the first and second one are interpreted as starting and ending
 date time. Starting date time should come before ending date time. If they are equal, then ending date time is discarded.
@@ -282,29 +286,29 @@ Suppose a user has no records and adds the following records.
 * `add rt/BLOODSUGAR dt/2019-02-08 12:12 con/4.5`
 * `add rt/BLOODSUGAR dt/2019-02-09 12:12 con/4.5`
 
-Average daily bloodusgar levels are clearly within the required range of 4.0 and 7.8 mmol/L (inclusive).
+Average daily `BLOODSUGAR` levels are clearly within the required range of 4.0 and 7.8 mmol/L (inclusive).
 After keying in the third record, the user not only sees that message indicating successful addition of the record, but
 also an additional message indicating that (a) new achievement(s) have been attained, and suggesting to check achievements.
-The achievements pane of the user will now indicate attainment of a bronze achievement for bloodsugar
-(Now a coloured image from what was previously a silhouette image and current state of ACHIEVED).
+The achievements pane of the user will now indicate attainment of a bronze achievement for `BLOODSUGAR`
+(Now a coloured image from what was previously a silhouette image and current state of `ACHIEVED`).
 
-* If the user at this point decides to delete the third bloodsugar record, a notification will indicate that achievements are lost,
-and on the achievements pane the user will lose the achievement (back to silhouette image and YET TO ACHIEVE state)
-* If the user has a new average bloodsugar record the next day and it still fufills the requirement, the user adds to the
-streak and is on the way towards the next level of attainment for bloodsugar.
-* If the user's new average record for the next day no longer meets the requirements for bloodsugar levels, the
-achievement that was originally attained will now have a state of PREVIOUSLY ACHIEVED instead and will be in grayscale
+* If the user at this point decides to delete the third `BLOODSUGAR` record, a notification will indicate that achievements are lost,
+and on the achievements pane the user will lose the achievement (back to silhouette image and `YET TO ACHIEVE` state)
+* If the user has a new average `BLOODSUGAR` record the next day and it still fufills the requirement, the user adds to the
+streak and is on the way towards the next level of attainment for `BLOODSUGAR`.
+* If the user's new average record for the next day no longer meets the requirements for `BLOODSUGAR` levels, the
+achievement that was originally attained will now have a state of `PREVIOUSLY ACHIEVED` instead and will be in grayscale
 colour. A notification is indicated to the user upon the user entering a new record that results in this change.
 * If the user's subsequent record is not within the next day, the user also loses his / or her streak, and
 needs to restart his / her count towards the bronze achievement. However, as there is evidence of a three-day streak of
-meeting the requirements for bloodsugar, the user still attains a PREVIOUSLY ACHIEVED state for the bronze achievement.
+meeting the requirements for `BLOODSUGAR`, the user still attains a `PREVIOUSLY ACHIEVED` state for the bronze achievement.
 The user may fill in the missing day of record in order to maintain the streak or restart the count from the new day
 onwards. (The reason for this is the program cannot award achievements without data that justifies it)
 
 The streak encourages users to keep up good health performances and healthy habits that lead to the results observed.
 Using the average records as a gauge or disregarding missing days of records would have allowed users to 'cheat' in
 between, but at the same time, users may just so happen to miss out filling in one day of record
-(hence implementation of the PREVIOUSLY ACHIEVED feature). Maintaining their records at least once a day encourages
+(hence implementation of the `PREVIOUSLY ACHIEVED` feature). Maintaining their records at least once a day encourages
 users to self-monitor and keep their blood sugar levels and BMI in check, with achievements to keep them going.
 
 To enhance performance, the application internally caches the list of achievements. So long as there is no modification
